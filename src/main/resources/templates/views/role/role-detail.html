@@ -1,0 +1,13 @@
+<main class="form-page">
+    <div class="form-card">
+        <h1 th:text="#{msg.role-detail.title}"></h1>
+        <dl class="row mt-3">
+            <dt class="col-sm-3" th:text="#{msg.role-detail.id}"></dt>
+            <dd class="col-sm-9" th:text="${role.id}"></dd>
+            <dt class="col-sm-3" th:text="#{msg.role-detail.name}"></dt>
+            <dd class="col-sm-9" th:text="${role.name}"></dd>
+        </dl>
+        <a th:href="@{/roles}" class="btn btn-secondary"
+           th:text="#{msg.role-detail.returnback}"></a>
+    </div>
+</main>
