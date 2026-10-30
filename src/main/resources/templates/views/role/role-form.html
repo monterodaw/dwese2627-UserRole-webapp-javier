@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head ('UserRole')"></head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="fragments/header :: header"></header>
 <main class="form-page">
     <div class="form-card">
         <h1 th:text="${role.id == null} ? #{msg.role-form.add} : #{msg.role-form.edit}"></h1>
@@ -20,3 +26,8 @@
         </form>
     </div>
 </main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<div th:replace="fragments/scripts :: scripts"></div>
+</body>
+</html>

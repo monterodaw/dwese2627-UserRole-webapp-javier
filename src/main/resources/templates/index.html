@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head ('UserRole - Inicio')"></head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="fragments/header :: header"></header>
+
+<main class="home-page">
+    <div class="home-hero">
+        <h1 class="display-5 fw-bold" th:text="#{msg.index.title}"></h1>
+        <p class="lead text-muted" th:text="#{msg.index.subtitle}"></p>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<div th:replace="fragments/scripts :: scripts"></div>
+</body>
+</html>

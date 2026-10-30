@@ -1,4 +1,10 @@
-<main class="list-page">
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head ('UserRole')"></head>
+<body class="d-flex flex-column h-100">
+
+<header th:replace="fragments/header :: header"></header><main class="list-page">
     <div class="list-card">
         <h1 th:text="#{msg.role-list.title}"></h1>
         <a th:href="@{/roles/new}" class="btn btn-success" th:text="#{msg.role-list.add}"></a>
@@ -16,8 +22,6 @@
                 <td th:text="${role.id}"></td>
                 <td th:text="${role.name}"></td>
                 <td>
-                    <a th:href="@{/roles/detail(id=${role.id})}" class="btn btn-info btn-sm"
-                       th:text="#{msg.role-list.detail}"></a>
                     <a th:href="@{/roles/edit(id=${role.id})}" class="btn btn-primary btn-sm"
                        th:text="#{msg.role-list.edit}"></a>
                     <form th:action="@{/roles/delete}" method="post" class="d-inline">
@@ -33,3 +37,8 @@
         </table>
     </div>
 </main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<div th:replace="fragments/scripts :: scripts"></div>
+</body>
+</html>
