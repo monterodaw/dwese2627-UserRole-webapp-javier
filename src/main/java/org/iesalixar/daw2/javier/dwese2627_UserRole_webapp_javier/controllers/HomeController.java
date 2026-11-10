@@ -1,4 +1,4 @@
-package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.Controllers;
+package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

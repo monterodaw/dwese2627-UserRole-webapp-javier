@@ -1,41 +1,60 @@
 package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.entities;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-/** Usuario de la aplicación (tabla users). Puede tener uno o varios roles. */
+
+/**
+ * Entidad JPA para la tabla 'users'.
+ */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class User {
+
+    /** BIGINT AUTO_INCREMENT PRIMARY KEY */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "{msg.user.username.notEmpty}")
-    @Size(max = 40, message = "{msg.user.username.size}")
-    private String username;
-    @NotEmpty(message = "{msg.user.password.notEmpty}")
-    @Size(max = 500, message = "{msg.user.password.size}")
+
+    /** VARCHAR(100) NOT NULL UNIQUE */
+    @Column(name = "email", nullable = false, unique = true, length = 40)
+    private String email;
+
+    /** VARCHAR(500) NOT NULL */
+    @Column(name = "password_hash", nullable = false, length = 500)
     private String passwordHash;
-    private Boolean active = true;
-    private Boolean accountNonLocked = true;
-    @NotNull(message = "{msg.user.lastPasswordChange.notNull}")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+
+    /** BOOLEAN NOT NULL DEFAULT TRUE */
+    @Column(name = "active", nullable = false)
+    private Boolean active = Boolean.TRUE;
+
+    /** BOOLEAN NOT NULL DEFAULT TRUE */
+    @Column(name = "account_non_locked", nullable = false)
+    private Boolean accountNonLocked = Boolean.TRUE;
+
+    /** DATETIME NULL */
+    @Column(name = "last_password_change")
     private LocalDateTime lastPasswordChange;
-    // Se calcula en el controlador (lastPasswordChange + 3 meses), no viene del formulario
+
+    /** DATETIME NULL */
+    @Column(name = "password_expires_at")
     private LocalDateTime passwordExpiresAt;
-    @NotNull(message = "{msg.user.failedLoginAttempts.notNull}")
-    @Min(value = 0, message = "{msg.user.failedLoginAttempts.min}")
+
+    /** INT DEFAULT 0 */
+    @Column(name = "failed_login_attempts", nullable = false)
     private Integer failedLoginAttempts = 0;
-    private Boolean emailVerified = false;
-    private Boolean mustChangePassword = false;
-    // IDs de los roles marcados en el formulario (los checkboxes se enlazan con este campo)
-    @NotEmpty(message = "{msg.user.roles.notEmpty}")
-    private List<Long> roleIds = new ArrayList<>();
-    // Roles completos del usuario (los carga el DAO para mostrarlos en la lista y el detalle)
-    private List<Role> roles = new ArrayList<>();
+
+    /** BOOLEAN NOT NULL DEFAULT FALSE */
+    @Column(name = "email_verified", nullable = false)
+    private Boolean emailVerified = Boolean.FALSE;
+
+    /** BOOLEAN NOT NULL DEFAULT FALSE */
+    @Column(name = "must_change_password", nullable = false)
+    private Boolean mustChangePassword = Boolean.FALSE;
 }

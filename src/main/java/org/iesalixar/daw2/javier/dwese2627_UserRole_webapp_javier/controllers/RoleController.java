@@ -1,7 +1,7 @@
-package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.Controllers;
+package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.controllers;
 
 import jakarta.validation.Valid;
-import org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.Daos.RoleDAO;
+import org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.daos.RoleDAO;
 import org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.entities.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

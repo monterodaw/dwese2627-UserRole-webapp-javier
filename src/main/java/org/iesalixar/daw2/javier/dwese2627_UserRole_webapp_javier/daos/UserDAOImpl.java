@@ -1,4 +1,4 @@
-package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.Daos;
+package org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.daos;
 
 import org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.entities.Role;
 import org.iesalixar.daw2.javier.dwese2627_UserRole_webapp_javier.entities.User;
